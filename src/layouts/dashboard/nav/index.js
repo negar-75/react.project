@@ -12,6 +12,7 @@ import useResponsive from '../../../hooks/useResponsive';
 import Logo from '../../../components/logo';
 import Scrollbar from '../../../components/scrollbar';
 import NavSection from '../../../components/nav-section';
+import ToggleStatus from '../../../components/toggle-status';
 //
 import navConfig from './config';
 
@@ -21,8 +22,9 @@ const NAV_WIDTH = 280;
 
 const StyledAccount = styled('div')(({ theme }) => ({
   display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(2, 2.5),
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  padding: theme.spacing(1.5, 2.5),
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
   backgroundColor: alpha(theme.palette.grey[500], 0.12),
 }));
@@ -60,17 +62,20 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
           <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Avatar src={account.photoURL} alt="photoURL" />
 
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
-              </Typography>
+              <Box sx={{ ml: 2 }}>
+                <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                  {account.displayName}
+                </Typography>
 
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
-              </Typography>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  {account.role}
+                </Typography>
+              </Box>
             </Box>
+            <ToggleStatus />
           </StyledAccount>
         </Link>
       </Box>

@@ -8,6 +8,7 @@ import Tooltip from './Tooltip';
 import Backdrop from './Backdrop';
 import Typography from './Typography';
 import Autocomplete from './Autocomplete';
+import Switch from './Switch';
 
 // ----------------------------------------------------------------------
 
@@ -15,6 +16,7 @@ export default function ComponentsOverrides(theme) {
   return Object.assign(
     Card(theme),
     Table(theme),
+    Switch(theme),
     Input(theme),
     Paper(theme),
     Button(theme),

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
@@ -17,10 +18,13 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
-
+import Table from '../components/table';
+import EditModal from '../components/editModal';
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalId, setModalId] = useState();
   const theme = useTheme();
 
   return (
@@ -34,8 +38,11 @@ export default function DashboardAppPage() {
           Hi, Welcome back
         </Typography>
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
+        <Grid container spacing={1}>
+          <Table setIsModalOpen={setIsModalOpen} setModalId={setModalId} />
+          <EditModal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} modalId={modalId} />
+
+          {/* <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
           </Grid>
 
@@ -211,7 +218,7 @@ export default function DashboardAppPage() {
                 { id: '5', label: 'Sprint Showcase' },
               ]}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>
